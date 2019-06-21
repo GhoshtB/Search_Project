@@ -164,6 +164,7 @@ android:padding="@dimen/size_small"
                 <EditText
                     android:id="@+id/fund_edit"
                     android:layout_weight="3"
+                    android:inputType="number"
                     android:background="@color/edit_back"
                     android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
