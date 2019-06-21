@@ -58,6 +58,7 @@ android:padding="@dimen/size_small"
                         android:ellipsize="end"
                         android:text="Min SIP Amount :"/>
                     <TextView
+                        android:id="@+id/min_text"
                         android:fontFamily="@font/montserrat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -77,6 +78,7 @@ android:padding="@dimen/size_small"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/max_text"
                         android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,7 +88,7 @@ android:padding="@dimen/size_small"
                     android:textColor="@android:color/darker_gray"
                     android:lines="1"
                     android:ellipsize="end"
-                        android:text="Max SIP Amount :"/>
+                        android:text="Max SIP Multiple :"/>
 
                     <TextView
                         android:fontFamily="@font/montserrat"

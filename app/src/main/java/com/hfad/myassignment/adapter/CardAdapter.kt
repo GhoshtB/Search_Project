@@ -2,6 +2,8 @@ package com.hfad.myassignment.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +29,8 @@ var  i1=0
         p0.apply {
             data[p1].let {
                 title.text=it.fundname
+                min_text.text=it.minsipamount.toString()
+                max_text.text=it.minsipmultiple.toString()
             }
         }
         p0.add_text.setOnClickListener {
@@ -38,13 +42,38 @@ var  i1=0
         }
 
 
+            p0.fund_edit.addTextChangedListener(object :TextWatcher{
+                override fun afterTextChanged(s: Editable?) {
+                    try {
+                    if ((p0.fund_edit.text.toString().toInt()*5)==data[p1].minsipamount &&(p0.fund_edit.text.toString().toInt()*10)==data[p1].minsipamount &&(p0.fund_edit.text.toString().toInt()*15)==data[p1].minsipamount &&(p0.fund_edit.text.toString().toInt()*20)==data[p1].minsipamount  ){
+                        p0.fund_edit?.error =null
+                    }else {
+                        p0.fund_edit.error="Empty"
+                    }
+                    }catch (e:NumberFormatException ){
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+            })
+
+
 
 
 
         p0.btnFund.setOnClickListener {
-            if (p0.fund_edit.text.isEmpty()){
+            if (p0.fund_edit.text.isEmpty() && p0.fund_edit.text.toString().toInt()<data[p1].minsipamount){
                 p0.fund_edit.error="Empty"
-            }else{
+            }else
+//                if ((p0.fund_edit.text.toString().toInt()*5)==data[p1].minsipamount &&(p0.fund_edit.text.toString().toInt()*10)==data[p1].minsipamount &&(p0.fund_edit.text.toString().toInt()*15)==data[p1].minsipamount &&(p0.fund_edit.text.toString().toInt()*20)==data[p1].minsipamount  )
+                {
                 listener.onCardClick(data[p1])
                 if (i1==1){
                     p0.rLayout.visibility=View.GONE
@@ -67,5 +96,7 @@ val add_text =view.add_text
         val rLayout=view.rLayout
         val btnFund=view.btnFund
         val fund_edit=view.fund_edit
+        val max_text=view.max_text
+        val min_text=view.min_text
     }
 }
